@@ -11,6 +11,7 @@ import games.moisoni.google_iab.BillingConnector
 import games.moisoni.google_iab.BillingEventListener
 import games.moisoni.google_iab.enums.ErrorType
 import games.moisoni.google_iab.enums.PurchasedResult
+import games.moisoni.google_iab.enums.SkuType
 import games.moisoni.google_iab.enums.SupportState
 import games.moisoni.google_iab.models.BillingResponse
 import games.moisoni.google_iab.models.PurchaseInfo
@@ -111,7 +112,11 @@ class KotlinSampleActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onPurchasedProductsFetched(purchases: MutableList<PurchaseInfo>) {
+            override fun onNoPurchasedProductsFetched(skuType: SkuType) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onPurchasedProductsFetched(skuType: SkuType, purchases: MutableList<PurchaseInfo>) {
                 purchases.forEach {
                     when (it.sku) {
                         "non_consumable_id2" -> {

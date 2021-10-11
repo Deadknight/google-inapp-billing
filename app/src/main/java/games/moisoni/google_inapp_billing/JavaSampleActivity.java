@@ -17,6 +17,7 @@ import java.util.List;
 import games.moisoni.google_iab.BillingConnector;
 import games.moisoni.google_iab.BillingEventListener;
 import games.moisoni.google_iab.enums.PurchasedResult;
+import games.moisoni.google_iab.enums.SkuType;
 import games.moisoni.google_iab.enums.SupportState;
 import games.moisoni.google_iab.models.BillingResponse;
 import games.moisoni.google_iab.models.PurchaseInfo;
@@ -109,7 +110,12 @@ public class JavaSampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPurchasedProductsFetched(@NonNull List<PurchaseInfo> purchases) {
+            public void onNoPurchasedProductsFetched(@NonNull SkuType skuType) {
+
+            }
+
+            @Override
+            public void onPurchasedProductsFetched(@NonNull SkuType skuType, @NonNull List<PurchaseInfo> purchases) {
                 String sku;
 
                 for (PurchaseInfo purchaseInfo : purchases) {
